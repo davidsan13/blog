@@ -18,13 +18,15 @@ function Blogs() {
     }
   ]
 
-  const allBlogs = blogs.map((blog) => 
-    <Link key={blog.id} to={{pathname: `/blog/${blog.id}`}}>{blog.title}</Link>
+  const allBlogs = blogs.map((blog) =>
+    <div className="blog-card">
+      <Link key={blog.id} to={{pathname: `/blog/${blog.id}`}}>{blog.title}</Link>
+    </div> 
   )
-  console.log(blogs)
+ 
   return (
     <>
-      <h1> All Blogs</h1>
+      <h1>Hello, Welcome to my blog page</h1>
       
       <div className='blog-container'>
         {allBlogs}
