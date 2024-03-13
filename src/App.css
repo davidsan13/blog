@@ -25,6 +25,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  overflow: scroll;
 }
 
 body {
@@ -38,8 +39,10 @@ a {
 }
 
 :root {
-  --primary:#fa5530;
-  --secondary:#fde48f;
+  --primary:#b9ebf4;
+  --secondary:#ca786d;
+  --third: #FFB0B0;
+  --grey: #EFECEC;
   --white: #fffbf8;
   --box-shadow: 0px 4px 70px 0px rgba(30, 40, 52, .08);
 }
@@ -64,11 +67,16 @@ nav {
           align-items: center;
   position: relative;
   gap: 1rem;
+  border-bottom: 2px solid var(--third);
 }
 
 nav h1 {
   font-weight: 700;
   font-size: 4.5rem;
+}
+
+nav h1 a {
+  color: var(--secondary);
 }
 
 nav input {
@@ -90,7 +98,9 @@ nav ul {
 }
 
 main {
-  height: 80%;
+  height: clamp(650px, 100%, -webkit-max-content);
+  height: clamp(650px, 100%, -moz-max-content);
+  height: clamp(650px, 100%, max-content);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,38 +111,44 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 1rem;
   background: var(--primary);
-  color: var(--white);
 }
 
-.blog-container {
-  display: -ms-grid;
-  display: grid;
-  max-width: 700px;
-  margin-inline: auto;
-  -ms-grid-columns: (minmax(320px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+.blogs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1rem;
 }
 
-.blog-container article {
-  border: 1px solid black;
-  width: 10rem;
-  height: 15rem;
-  --img-scale: 1.001;
-  --title-color: black;
-  --link-icon-translate: -20px;
-  --link-icon-opacity: 0;
+.blogs .blog-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
+  background: var(--secondary);
+}
+
+.blogs .blog-container article {
+  width: 20rem;
+  height: 4rem;
   position: relative;
-  border-radius: 16px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  background: #fff;
-  -webkit-transform-origin: center;
-          transform-origin: center;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-  overflow: hidden;
+  background: var(--white);
 }
 
 footer {
@@ -174,45 +190,5 @@ footer .footer-link img {
 
 footer h1 {
   font-size: 1rem;
-}
-
-article a .icon {
-  min-width: 24px;
-  width: 24px;
-  height: 24px;
-  margin-left: 5px;
-  -webkit-transform: translateX(var(--link-icon-translate));
-          transform: translateX(var(--link-icon-translate));
-  opacity: var(--link-icon-opacity);
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-article a::after {
-  position: absolute;
-  inset-block: 0;
-  inset-inline: 0;
-  cursor: pointer;
-  content: "";
-}
-
-article:has(:hover, :focus) {
-  --img-scale: 1.1;
-  --title-color: #28666e;
-  --link-icon-translate: 0;
-  --link-icon-opacity: 1;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-}
-
-.sr-only:not(:focus):not(:active) {
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
 }
 /*# sourceMappingURL=App.css.map */

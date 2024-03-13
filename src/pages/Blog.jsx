@@ -1,9 +1,23 @@
-import React from 'react'
+import { useState, useEffect, React} from 'react'
 import { useParams } from 'react-router-dom'
 
 
 
 const Blog = () => {
+  const [blog, setBlog] = useState([]);
+  const {blogId} = useParams()
+  useEffect(() => {
+    fetch(`http://localhost:3005/blog/${blogId}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data.blog);
+        setBlog(data.blog);
+      });
+  }, []);
+
+  console.log(blog.content)
   const blogs = [
     {
       'id': 1,
@@ -21,16 +35,16 @@ const Blog = () => {
   ]
   const {id} = useParams()
 
-  const filterBlog = blogs.find(blog => 
-    blog.id === parseInt(id))
+  // const filterBlog = blogs.find(blog => 
+  //   blog.id === parseInt(id))
   // console.log(blogs.find(blog => blog.id === parseInt(id)))
 
 
-  const blog = <h1 key={filterBlog.id}>{filterBlog.content}</h1>
+  const blogView = <h1 key={blog._id}>{blog.content}</h1>
   return (
     <>
       <h1>Single Blog</h1>
-      {blog}
+      {blogView}
     </>
   )
 }
