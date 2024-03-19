@@ -16,34 +16,30 @@ const Blog = () => {
         setBlog(data.blog);
       });
   }, []);
-
-  console.log(blog.content)
-  const blogs = [
-    {
-      'id': 1,
-      'title':'This is my first blog post',
-      'content': `Welcome to my blog page, This first post will be an introdution 
-      about my pages `, 
-      'published': true,
-    },
-    {
-      'id': 2,
-      'title':'Second blog post',
-      'content': `My second blog post, and I am going to be talking about HRV `, 
-      'published': true,
-    }
-  ]
+      
   const {id} = useParams()
 
-  // const filterBlog = blogs.find(blog => 
-  //   blog.id === parseInt(id))
-  // console.log(blogs.find(blog => blog.id === parseInt(id)))
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
 
-  const blogView = <h1 key={blog._id}>{blog.content}</h1>
+    return [year, month, day].join('-');
+  }
+  const date = formatDate(blog.publishedAt)
+  const blogView = <div className="blog" key={blog._id}>
+    <h1 className='blog-title'>{blog.title}</h1>
+    <h2 className='blog-date'>{date}</h2>
+    <p className='blog-content'>{blog.content}</p>
+  </div>
   return (
     <>
-      <h1>Single Blog</h1>
       {blogView}
     </>
   )

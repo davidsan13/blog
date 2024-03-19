@@ -1,18 +1,17 @@
-import React from 'react'
-import { Outlet } from "react-router-dom";
+import { useState, useEffect, React} from 'react'
+import { useParams } from 'react-router-dom'
+import Blogs from '../components/Blogs'
 
-import Footer from '../components/Footer'
-import Navbar from '../components/NavBar'
-
-const Home = () => {
-  return (
-    <>
-      <Navbar/>
-      <main>
-        <Outlet />
-      </main>
-      <Footer/>
-    </>
+const Home= () => {
+  const url = 'http://localhost:3005/blog'
+  return  (
+    <div className="blogs">
+      <div className='heading-container'>
+        <h1>Hi! Welcome to my blog</h1>
+      </div>
+      <Blogs url={url}/>
+      <a href='/blog/allBlogs'> <h2>More Blogs</h2> </a>
+    </div>
   )
 }
 
