@@ -2,14 +2,12 @@ import { useState, useEffect, React} from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import GetData from '../components/Api'
 import Comment from '../components/Comment'
-const Blog = (props) => {
+import formatDate from '../assets/utilities/helper'
+const Blog = () => {
   const [blog, setBlog] = useState([]);
   const [comments, setComments] = useState([])
   let {state} = useLocation()
-  // let {blogData} = location 
-  const {blogId} = useParams()
 
-  console.log(blogId)
   useEffect(() => {
     setBlog(state)
     const getComment = () => {
@@ -24,22 +22,9 @@ const Blog = (props) => {
         })
     }
     getComment()
-  }, [])
-  // console.log(blog.comments)
-  // const {id} = useParams()
-  function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+  },[state])
+ 
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-
-    return [month, day, year].join('-');
-  }
 
 
  
@@ -51,7 +36,6 @@ const Blog = (props) => {
       <h1 className='comment-date'>{formatDate(comment.createdTime)}</h1>
       <p className='comment-message'>{comment.message}</p>
     </article>
-    
   )
 
 
@@ -61,10 +45,7 @@ const Blog = (props) => {
       <h1 className='blog-title'>{blog.title}</h1>
       <h2 className='blog-date'>{date}</h2>
       <p className='blog-content'>{blog.content}</p>
-      <div className='comments-container'>
         <Comment/>
-        {allComments}
-      </div>
     </div>
 
   return (
