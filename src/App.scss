@@ -197,6 +197,7 @@ main {
   gap: 20px;
   // background: var(--secondary);
   // width: 650px;
+  border-top: 2px solid var(--third);
  .blog-article {
   width: 5em;
   height: 10em;
@@ -240,6 +241,8 @@ main {
   padding: 1rem;
   margin-top: 1rem;
   background-color: #d0c9c845;
+  border-top: 2px solid var(--third);
+
 }
 .comments-article {
   display: flex;
@@ -247,6 +250,7 @@ main {
   background-color: var(--white);
   gap: .5rem;
   padding: 1rem;
+  margin: 1rem;
   .user-heading {
     font-weight: bold;
   }

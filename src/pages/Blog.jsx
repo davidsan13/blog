@@ -1,5 +1,5 @@
 import { useState, useEffect, React} from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import GetData from '../components/Api'
 import Comment from '../components/Comment'
 const Blog = (props) => {
@@ -7,21 +7,24 @@ const Blog = (props) => {
   const [comments, setComments] = useState([])
   let {state} = useLocation()
   // let {blogData} = location 
+  const {blogId} = useParams()
 
+  console.log(blogId)
   useEffect(() => {
     setBlog(state)
-    console.log(blog)
-    let url = `http://localhost:3005/blog/${state._id}/`
+    const getComment = () => {
+      let url = `http://localhost:3005/blog/${state._id}/`
 
-    GetData(url, 'GET')
-      .then(res => {
-        return res.json()
-      })
-      .then(data => {
-        setComments(data.comments)
-        console.log(data)
-      })
-  }, []);
+      GetData(url, 'GET')
+        .then(res => {
+          return res.json()
+        })
+        .then(data => {
+          setComments(data.comments)
+        })
+    }
+    getComment()
+  }, [])
   // console.log(blog.comments)
   // const {id} = useParams()
   function formatDate(date) {
@@ -37,6 +40,9 @@ const Blog = (props) => {
 
     return [month, day, year].join('-');
   }
+
+
+ 
   const date = formatDate(blog.publishedAt)
 
   const allComments = comments.map((comment) =>

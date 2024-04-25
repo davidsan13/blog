@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const Comment = (props) => {
   const [user, setUser] = useState('')
-  const [comment, setComment] = useState('')
+  const [message, setMessage] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+
+  const params = useParams()
+  const blogId = params.blogId
+  // console.log(blogId)
 
   const navigate = useNavigate()
 
@@ -14,13 +18,13 @@ const Comment = (props) => {
   }
 
   const addComment = () => {
-    fetch('http://localhost:3005/admin/login', {
+    fetch(`http://localhost:3005/blog/${blogId}/comment`, {
       method: 'POST',
       credentials:"include",
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ user, comment }),
+      body: JSON.stringify({ user, message }),
     })
       .then((r) => r.json())
       .then((r) => {
@@ -52,9 +56,9 @@ const Comment = (props) => {
         <textarea
           rows="4"
           cols="50"
-          value={comment}
+          value={message}
           placeholder="Add a comment"
-          onChange={(ev) => setComment(ev.target.value)}
+          onChange={(ev) => setMessage(ev.target.value)}
           className={'inputBox'}
         />
         <label className="errorLabel">{passwordError}</label>
