@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest",
-    "start": "NODE_ENV=production node ./src/app"
+    "start": "NODE_ENV=production node ./dist"
   },
   "proxy": "https://blogapi-production-2953.up.railway.app/blog",
   "dependencies": {
