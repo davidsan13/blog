@@ -3,11 +3,9 @@ import { Link} from 'react-router-dom'
 
 function Blogs({blogs}) {
   
-
   const allBlogs = blogs.map((blog) =>
-    // console.log(blog)
     <article className='blog-article'key={blog._id}>
-      <img placeholder="#"></img>
+      <img src='https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png'></img>
       <div className="blog-content">
         <h2>{blog.title}</h2>
         <p>
@@ -15,15 +13,12 @@ function Blogs({blogs}) {
         </p>
         <Link className='read-more' 
           to={{ pathname: `/blog/${blog._id}` }}
-          state={blog}
-        >          
-        Read
+          state={blog}>          
+          Read
         </Link>
       </div>
     </article>
   )
-  console.log(allBlogs)
-  console.log(allBlogs)
   return (
     <div className='blog-container'>
       {allBlogs}

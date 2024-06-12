@@ -195,8 +195,6 @@ main {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 20px;
-  // background: var(--secondary);
-  // width: 650px;
   border-top: 2px solid var(--third);
  .blog-article {
   width: 5em;
@@ -205,13 +203,8 @@ main {
   width: 400px;
   gap: 2rem;
   margin: 1rem;
-  // border-radius: 16px
-  // background: var(--white);
   display: flex;
-  // justify-content: center;
   align-items: center;
-  // align-content: space-between;
-  // font-size: 3rem;
   img {
     height: 10rem;
     width: 10rem;

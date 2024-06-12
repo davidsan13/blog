@@ -4,6 +4,7 @@ export default function GetData(url, method) {
   // const navigate = useNavigate();
   return fetch(url, {
     credentials: 'include',
+    
     method: method,
     headers: {
       Accept: 'application/json',
