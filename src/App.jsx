@@ -4,7 +4,7 @@ import Router from './components/Routes'
 import GetData from './components/Api'
 function App() {
   const [blogs, setBlogs] = useState([]);
-  const url = 'https://blogapi-production-2953.up.railway.app/blog/allBlogs'
+  const url = 'http://localhost:3005/blog/allBlogs'
 
   useEffect(() => {
     GetData(url, 'GET')
