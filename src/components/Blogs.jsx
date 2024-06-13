@@ -10,7 +10,7 @@ function Blogs({blogs}) {
       <div className="blog-content">
         <h2>{blog.title}</h2>
         <p>
-          {renderHTML(decode(blog.content)).substring(0, 50)}
+          {renderHTML(decode(blog.content.substring(0, 50)))}
         </p>
         <Link className='read-more' 
           to={{ pathname: `/blog/${blog._id}` }}
