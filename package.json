@@ -11,7 +11,7 @@
     "test": "vitest",
     "start": "NODE_ENV=production node ./dist"
   },
-  "proxy": "https://blogapi-production-2953.up.railway.app/blog",
+  "proxy": "http://localhost:3005/",
   "dependencies": {
     "html-entities": "^2.5.2",
     "js-cookie": "^3.0.5",

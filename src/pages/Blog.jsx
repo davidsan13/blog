@@ -14,14 +14,16 @@ const Blog = () => {
   },[state])
   
   const date = formatDate(blog.publishedAt)
-  const renderHTML = (rawHTML) => createElement("div", { dangerouslySetInnerHTML: { __html: rawHTML } });
+  const renderHTML = (rawHTML) => createElement("div", { dangerouslySetInnerHTML: { __html: rawHTML }, className: "blog-content" });
 
   const blogView = 
     <div className="blog" key={blog._id}>
       <h1 className='blog-title'>{blog.title}</h1>
       <h2 className='blog-date'>{date}</h2>
-      <p className='blog-content'>{renderHTML(decode(blog.content))}</p>
+    
+      {renderHTML(decode(blog.content))}
       <Comment/>
+
     </div>
 
   return (
