@@ -10,11 +10,16 @@
   font-size: 62.5%;
 }
 
+body {
+  place-items: center;
+  height: 100vh;
+  z-index: 1;
+}
+
 #root {
   text-align: center;
   font-size: 8rem;
-  height: 100vh;
-  position: relative;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,16 +27,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  overflow: scroll;
-}
-
-body {
-  place-items: center;
-  height: 100%;
-  position: relative;
+  overflow: auto;
 }
 
 a {
@@ -98,9 +94,6 @@ nav ul {
 }
 
 main {
-  height: clamp(650px, 100%, -webkit-max-content);
-  height: clamp(650px, 100%, -moz-max-content);
-  height: clamp(650px, 100%, max-content);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,14 +101,15 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  height: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: auto;
   gap: 1rem;
-  background: var(--primary);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 .blogs {
@@ -127,12 +121,34 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   margin: 1rem;
+  width: 80%;
 }
 
-.blogs .blog-container {
+.blogs .heading-container {
+  height: 300px;
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+.blogs .heading-container h1 {
+  font-weight: 800;
+  color: var(--secondary);
+  font-size: 9rem;
+}
+
+.blog {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -140,15 +156,248 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 24px;
-  background: var(--secondary);
+  width: 50%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 2rem;
+  gap: 1rem;
+  text-align: justify;
 }
 
-.blogs .blog-container article {
-  width: 20rem;
-  height: 4rem;
+.blog .blog-title {
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.blog .blog-date {
+  font-size: 2.5rem;
+  line-height: 1.125rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 1rem;
+}
+
+.blog .blog-content {
+  width: 100%;
+}
+
+.blog .blog-content h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.blog .blog-content h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.blog .blog-content h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.blog .blog-content h4 {
+  display: block;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.blog .blog-content h5 {
+  display: block;
+  font-size: .83em;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.blog .blog-content h6 {
+  display: block;
+  font-size: .67em;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.blog .blog-content p {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 2rem;
+}
+
+.blog-container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  border-top: 2px solid var(--third);
+  margin-top: 1rem;
+}
+
+.blog-container .blog-article {
+  width: 5em;
+  height: 10em;
   position: relative;
-  background: var(--white);
+  width: 400px;
+  gap: 2rem;
+  margin: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.blog-container .blog-article img {
+  height: 10rem;
+  width: 10rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.blog-container .blog-article .blog-content {
+  font-size: 2.0rem;
+  font-weight: 600;
+  text-align: justify;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.blog-container .blog-article .blog-content div {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.comments-container {
+  width: 100%;
+  font-size: 3.5rem;
+  border-top: 1px solid black;
+  padding: 1rem;
+  margin-top: 1rem;
+  background-color: #d0c9c845;
+  border-top: 2px solid var(--third);
+}
+
+.comments-article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: var(--white);
+  gap: .5rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.comments-article .user-heading {
+  font-weight: bold;
+}
+
+.comments-article .comment-date {
+  font-size: 1.25rem;
+}
+
+.comments-article .comment-message {
+  font-size: 1.5rem;
+}
+
+.comment-form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+.comment-form-container .titleContainer {
+  font-size: 2.5rem;
+  font-size: bold;
+}
+
+.comment-form-container textarea {
+  resize: none;
+}
+
+.comment-form-container .inputBox {
+  width: 30rem;
+  height: 10rem;
+  font-size: 15px;
+  padding: 1rem;
+  outline: none;
+}
+
+.comment-form-container .inputBox.user {
+  height: 3rem;
+}
+
+.comment-form-container .inputButton {
+  background-color: white;
+  width: 6.5rem;
+  height: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.comment-form-container .inputButton :active {
+  vertical-align: top;
+  padding: 8px 13px 6px;
 }
 
 footer {

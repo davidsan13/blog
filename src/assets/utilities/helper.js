@@ -1,4 +1,6 @@
-export default function formatDate(date) {
+
+
+ export default function formatDate(date) {
   var d = new Date(date),
       month = '' + (d.getMonth() + 1),
       day = '' + d.getDate(),
@@ -11,3 +13,4 @@ export default function formatDate(date) {
 
   return [month, day, year].join('-');
 }
+
