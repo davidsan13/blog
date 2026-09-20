@@ -14,7 +14,7 @@ The **public reader site** of a three-app blog: a responsive, accessible front e
 - **Live search** across post titles and body text.
 - **Deep-linkable posts** (`/blog/:id` loads its own data, so refreshes and shared links work).
 - **Comments** with validation, pending/error states and automatic refresh after posting.
-- **Author profile** (name, GitHub/LinkedIn) loaded from the API for the nav, footer and page titles, edited in blogAdmin. The home page greeting is intentionally hardcoded in `src/pages/Home.jsx`.
+- **Author profile** (name, GitHub/LinkedIn) loaded from the API for the nav, footer and page titles, edited in blogAdmin.
 - **Light and dark themes** that follow the OS setting, keyboard-friendly navigation, skip link and reduced-motion support.
 - **Safe HTML rendering**: post bodies are entity-decoded and sanitized with DOMPurify before display.
 
