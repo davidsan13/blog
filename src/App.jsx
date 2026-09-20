@@ -1,25 +1,6 @@
-import { useState, useEffect } from 'react'
-import './App.scss'
-import Router from './components/Routes'
-import GetData from './components/Api'
-function App() {
-  const [blogs, setBlogs] = useState([]);
-  const url = 'http://localhost:3005/blog/allBlogs'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router'
 
-  useEffect(() => {
-    GetData(url, 'GET')
-      .then((res) => {
-        return res.json()
-      })
-      .then(data => {
-        setBlogs(data)
-      })
-  }, [])
-  return (
-    <>
-      <Router blogs={blogs}/>
-    </>
-  )
+export default function App() {
+  return <RouterProvider router={router} />
 }
-
-export default App

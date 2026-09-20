@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react'
-import { Link} from 'react-router-dom'
-
-const SearchBar = ({keyword, onChange}) => {
-  const BarStyle = {width:"20rem",background:"#F0F0F0", border:"none", padding:"0.5rem"};
+export default function SearchBar({ keyword, onChange }) {
   return (
-    <input 
-     style={BarStyle}
-     key="search-bar"
-     value={keyword}
-     placeholder={"search news"}
-     onChange={(e) => onChange(e.target.value)}
-    />
-  );
+    <div className="search">
+      <label htmlFor="post-search" className="sr-only">
+        Search posts
+      </label>
+      <input
+        id="post-search"
+        type="search"
+        value={keyword}
+        placeholder="Search posts…"
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
+  )
 }
-
-export default SearchBar;
