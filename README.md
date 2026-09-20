@@ -93,6 +93,7 @@ tests/          Vitest suites for helpers and full page flows
 **Full-stack architecture**
 - Splitting one product into an API and two independent front ends (reader and admin) that talk to the same REST API, with CORS and Bearer-token auth handled on the API side.
 
+
 ```mermaid
 flowchart LR
     reader["<b>blog</b><br/>Public reader site<br/>React + Vite"]
@@ -113,6 +114,7 @@ flowchart LR
     admin -->|"HTTPS + JSON<br/>log in, then Authorization: Bearer token"| auth
     api -->|Mongoose| db
 ```
+
 
 - **Two front ends, one API.** The reader site only calls public routes. The admin site logs in with a username and password, receives a JWT, stores it in `localStorage`, and sends it as `Authorization: Bearer <token>` on every request.
 - **The API is the only thing that touches the database** and is the source of truth for permissions: the front ends only hide or show controls, and every protected route re-checks the token and admin role.
